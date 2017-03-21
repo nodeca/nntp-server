@@ -1,0 +1,38 @@
+{
+  "name": "nntp-server",
+  "version": "0.0.0",
+  "description": "NNTP server implementation.",
+  "keywords": [
+    "nntp",
+    "nntp server"
+  ],
+  "license": "MIT",
+  "repository": "nodeca/nntp-server",
+  "files": [
+    "index.js",
+    "lib/"
+  ],
+  "scripts": {
+    "lint": "eslint .",
+    "test": "npm run lint && mocha",
+    "coverage": "rm -rf coverage && istanbul cover _mocha",
+    "report-coveralls": "istanbul cover _mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage"
+  },
+  "dependencies": {
+    "debug": "^2.6.3",
+    "denque": "^1.1.1",
+    "destroy": "^1.0.4",
+    "end-of-stream": "^1.4.0",
+    "from2": "^2.3.0",
+    "pump": "^1.0.2",
+    "serialize-error": "^2.1.0",
+    "split2": "^2.1.1",
+    "through2": "^2.0.3"
+  },
+  "devDependencies": {
+    "coveralls": "^2.12.0",
+    "eslint": "^3.18.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.2.0"
+  }
+}

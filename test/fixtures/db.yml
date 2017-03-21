@@ -1,0 +1,63 @@
+groups:
+  -
+    name: test.groups.foo
+    min_index: 1
+    max_index: 2
+    total: 2
+    create_ts: 2010-01-16 3:14:24.05
+    description: Test newsgroup
+  -
+    name: test.groups.bar
+    min_index: 1
+    max_index: 3
+    total: 3
+    create_ts: 2011-04-29 16:42:35.11
+    description: ~
+  -
+    name: test.groups.empty
+    min_index: 0
+    max_index: 0
+    total: 0
+    create_ts: 1980-01-01 0:01:00.00
+    description: Empty newsgroup
+
+messages:
+  # First group
+  -
+    group: test.groups.foo
+    id: 4c51f95eda05@lists.example.org
+    index: 1
+    ts: 1997-01-15 2:59:43.10
+    head: |
+      From: John Doe <j.doe@example.org>
+      Xref: localhost test.groups.foo:1
+    body: |
+      first message in first group
+  -
+    group: test.groups.foo
+    id: d417dea0c7a3@lists.example.org
+    index: 2
+    ts: 2017-01-16 3:14:24.05
+    head: |
+      From: Richard Roe <r.roe@example.org>
+    body: |
+      second message in first group
+  # Second group
+  -
+    group: test.groups.bar
+    id: 1ce0bf1e35b4@lists.example.org
+    index: 1
+    ts: 2016-02-11 12:34:24.48
+    head: |
+      From: John Doe <j.doe@example.org>
+    body: |
+      first message in second group
+  -
+    group: test.groups.bar
+    id: 535b279b4bb9@lists.example.org
+    index: 2
+    ts: 2016-04-29 16:42:35.11
+    head: |
+      From: Richard Roe <r.roe@example.org>
+    body: |
+      second message in second group
