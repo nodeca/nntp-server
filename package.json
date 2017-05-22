@@ -24,6 +24,7 @@
     "destroy": "^1.0.4",
     "end-of-stream": "^1.4.0",
     "from2": "^2.3.0",
+    "glob": "^7.1.2",
     "pump": "^1.0.2",
     "serialize-error": "^2.1.0",
     "split2": "^2.1.1",
