@@ -1,6 +1,6 @@
 {
   "name": "nntp-server",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "NNTP server implementation.",
   "keywords": [
     "nntp",
