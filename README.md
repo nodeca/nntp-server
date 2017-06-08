@@ -1,6 +1,8 @@
 nntp-server
 ===========
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/nodeca/nntp-server.svg)](https://greenkeeper.io/)
+
 [![Build Status](https://img.shields.io/travis/nodeca/nntp-server/master.svg?style=flat)](https://travis-ci.org/nodeca/nntp-server)
 [![NPM version](https://img.shields.io/npm/v/nntp-server.svg?style=flat)](https://www.npmjs.org/package/nntp-server)
 [![Coverage Status](https://coveralls.io/repos/github/nodeca/nntp-server/badge.svg?branch=master)](https://coveralls.io/github/nodeca/nntp-server?branch=master)
