@@ -93,9 +93,10 @@ module.exports = function mock_db(nntp, fixture_path) {
         return '<' + msg.id + '>';
 
       default:
-        let match = msg.head.split('\n')
-                            .map(str => str.match(/^(.*?):\s*(.*)$/))
-                            .filter(m => m && m[1].toLowerCase() === field);
+        let match = msg.head
+          .split('\n')
+          .map(str => str.match(/^(.*?):\s*(.*)$/))
+          .filter(m => m && m[1].toLowerCase() === field);
 
         return match.length ? match[0][2] : null;
     }
