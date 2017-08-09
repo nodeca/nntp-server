@@ -19,7 +19,7 @@
     "report-coveralls": "istanbul cover _mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage"
   },
   "dependencies": {
-    "debug": "^2.6.3",
+    "debug": "^3.0.0",
     "denque": "^1.1.1",
     "destroy": "^1.0.4",
     "end-of-stream": "^1.4.0",
