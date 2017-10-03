@@ -1,0 +1,8 @@
+{
+  "reporter": [
+    "text-summary"
+  ],
+  "exclude": [
+    "test/**/*"
+  ]
+}

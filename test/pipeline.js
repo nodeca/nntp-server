@@ -22,6 +22,12 @@ describe('pipeline', function () {
     });
   });
 
+
+  after(function () {
+    return nntp.close();
+  });
+
+
   function not_implemented() { throw new Error('not implemented'); }
   function delay(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
 

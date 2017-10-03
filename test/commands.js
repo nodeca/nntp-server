@@ -9,17 +9,22 @@ const Server       = require('..');
 
 
 describe('commands', function () {
-  let port, socket, client;
+  let nntp, port, socket, client;
 
   before(function () {
     // Disable default channel ecryption check
-    let nntp = new Server({ secure: true });
+    nntp = new Server({ secure: true });
     mock_db(nntp, join(__dirname, 'fixtures/db.yml'));
 
     // listen on random port
     return nntp.listen('nntp://localhost:0').then(() => {
       port = nntp.server.address().port;
     });
+  });
+
+
+  after(function () {
+    return nntp.close();
   });
 
 

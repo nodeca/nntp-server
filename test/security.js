@@ -10,16 +10,21 @@ const Server       = require('..');
 
 
 describe('security', function () {
-  let port_plain, client_plain, socket_plain;
-  let port_tls, client_tls, socket_tls;
+  let port_plain, client_plain, socket_plain, nntp_plain;
+  let port_tls, client_tls, socket_tls, nntp_tls;
 
   before(function () {
-    let nntp = new Server({ secure: false });
+    nntp_plain = new Server({ secure: false });
 
     // listen on random port
-    return nntp.listen('nntp://localhost:0').then(() => {
-      port_plain = nntp.server.address().port;
+    return nntp_plain.listen('nntp://localhost:0').then(() => {
+      port_plain = nntp_plain.server.address().port;
     });
+  });
+
+
+  after(function () {
+    return nntp_plain.close();
   });
 
 
@@ -37,7 +42,7 @@ describe('security', function () {
 
 
   before(function () {
-    let nntp = new Server({
+    nntp_tls = new Server({
       secure: true,
       tls: {
         key:  fs.readFileSync(join(__dirname, 'fixtures', 'server-key.pem')),
@@ -46,9 +51,14 @@ describe('security', function () {
     });
 
     // listen on random port
-    return nntp.listen('nntps://localhost:0').then(() => {
-      port_tls = nntp.server.address().port;
+    return nntp_tls.listen('nntps://localhost:0').then(() => {
+      port_tls = nntp_tls.server.address().port;
     });
+  });
+
+
+  after(function () {
+    return nntp_tls.close();
   });
 
 
