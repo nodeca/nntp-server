@@ -142,14 +142,17 @@ describe('flatten-stream', function () {
     let stream = flatten({ highWaterMark: 0 });
 
     let count = 0;
+    let next_called = false;
 
     let src1 = new Readable({
       read() {
         this.push('qwe');
 
-        count++;
-        if (count === 2) next();
-        if (count >= 3) next(new Error('reading too much data'));
+        if (!next_called) next();
+        next_called = true;
+
+        // prevent buffering all the data somewhere
+        if (count > 100) next(new Error('reading too much data'));
       },
       objectMode: true,
       highWaterMark: 0
