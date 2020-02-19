@@ -26,14 +26,14 @@
     "from2": "^2.3.0",
     "glob": "^7.1.2",
     "pump": "^3.0.0",
-    "serialize-error": "^4.0.0",
+    "serialize-error": "^5.0.0",
     "split2": "^3.0.0",
     "through2": "^3.0.0"
   },
   "devDependencies": {
     "coveralls": "^3.0.0",
-    "eslint": "^5.5.0",
-    "mocha": "^6.0.0",
-    "nyc": "^14.0.0"
+    "eslint": "^6.8.0",
+    "mocha": "^7.0.1",
+    "nyc": "^15.0.0"
   }
 }
