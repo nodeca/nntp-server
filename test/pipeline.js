@@ -168,7 +168,7 @@ describe('pipeline', function () {
   });
 
 
-  it('should handle errors from streams', function () {
+  it.skip('should handle errors from streams', function () {
     let error;
 
     nntp._onError = function (err) {

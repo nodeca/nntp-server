@@ -1,9 +1,9 @@
 
 'use strict';
 
-const from2  = require('from2');
 const fs     = require('fs');
 const yaml   = require('js-yaml');
+const { Readable } = require('stream');
 
 
 module.exports = function mock_db(nntp, fixture_path) {
@@ -15,7 +15,7 @@ module.exports = function mock_db(nntp, fixture_path) {
       .filter(g => !ts || g.create_ts > ts)
       .filter(g => (wildmat ? wildmat.test(g.name) : true));
 
-    return from2.obj(result);
+    return Readable.from(result);
   };
 
   nntp._selectGroup = function (session, group_id) {
@@ -66,7 +66,7 @@ module.exports = function mock_db(nntp, fixture_path) {
       .filter(m => m.group === session.group.name)
       .filter(m => m.index >= first && m.index <= last);
 
-    return from2.obj(result);
+    return Readable.from(result);
   };
 
   nntp._getNewNews = function (session, ts, wildmat) {
@@ -74,7 +74,7 @@ module.exports = function mock_db(nntp, fixture_path) {
       .filter(msg => !ts || msg.ts > ts)
       .filter(msg => (wildmat ? wildmat.test(msg.group) : true));
 
-    return from2.obj(result);
+    return Readable.from(result);
   };
 
   nntp._buildHead = function (session, msg) { return msg.head; };

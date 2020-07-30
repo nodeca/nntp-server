@@ -23,12 +23,10 @@
     "denque": "^1.1.1",
     "destroy": "^1.0.4",
     "end-of-stream": "^1.4.0",
-    "from2": "^2.3.0",
     "glob": "^7.1.2",
     "pump": "^3.0.0",
     "serialize-error": "^7.0.1",
-    "split2": "^3.0.0",
-    "through2": "^3.0.0"
+    "split2": "^3.0.0"
   },
   "devDependencies": {
     "coveralls": "^3.0.0",
