@@ -3,7 +3,7 @@
 const assert    = require('assert');
 const flatten   = require('../lib/flatten-stream');
 const asline    = require('./helpers').asline;
-const { Readable, Writable }  = require('stream').Readable;
+const { Readable, Writable }  = require('stream');
 
 
 describe('flatten-stream', function () {

@@ -3,20 +3,40 @@
 'use strict';
 
 
-const glob    = require('glob');
 const net     = require('net');
-const path    = require('path');
 const tls     = require('tls');
 const url     = require('url');
 const Session = require('./lib/session');
 
 
-const commands = {};
-
-glob.sync('*.js', { cwd: path.join(__dirname, 'lib', 'commands') }).forEach(file => {
-  let m = require('./lib/commands/' + file);
-  commands[m.head.toUpperCase()] = m;
-});
+const commands = [
+  require('./lib/commands/article'),
+  require('./lib/commands/authinfo_pass'),
+  require('./lib/commands/authinfo_user'),
+  require('./lib/commands/body'),
+  require('./lib/commands/capabilities'),
+  require('./lib/commands/date'),
+  require('./lib/commands/group'),
+  require('./lib/commands/hdr'),
+  require('./lib/commands/head'),
+  require('./lib/commands/help'),
+  require('./lib/commands/list'),
+  require('./lib/commands/list_active'),
+  require('./lib/commands/list_newsgroups'),
+  require('./lib/commands/list_overview_fmt'),
+  require('./lib/commands/listgroup'),
+  require('./lib/commands/mode'),
+  require('./lib/commands/mode_reader'),
+  require('./lib/commands/newgroups'),
+  require('./lib/commands/newnews'),
+  require('./lib/commands/over'),
+  require('./lib/commands/quit'),
+  require('./lib/commands/stat'),
+  require('./lib/commands/xhdr'),
+  require('./lib/commands/xover')
+].reduce((obj, cmd) => {
+  obj[cmd.head] = cmd; return obj;
+}, {});
 
 
 const DEFAULT_OPTIONS = {
