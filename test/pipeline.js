@@ -176,12 +176,12 @@ describe('pipeline', function () {
       error = err;
     };
 
-    nntp._getGroups = async function () {
+    nntp._getGroups = function () {
       return new stream.Readable({
         read() {
           let err = new Error('Test stream error');
           err.code = 'ETEST';
-          this.emit('error', err);
+          throw err;
         },
         objectMode: true
       });
