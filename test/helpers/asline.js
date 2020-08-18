@@ -124,26 +124,11 @@ AsLine.prototype.skip = function (lines = 1) {
 };
 
 
-// Reads entire source buffer until data is available, then closes stream
+// Closes stream
 //
-AsLine.prototype.end = function (expect) {
+AsLine.prototype.end = function () {
   this._promise = this._promise.then(() => {
-    let buffer = [];
-    let data;
-
-    while ((data = this._input.read()) !== null) {
-      buffer.push(data);
-    }
-
     this._input.end();
-
-    let actual = buffer.join(this._linebreak);
-
-    if (typeof expect === 'string') {
-      assert.equal(actual, expect);
-    }
-
-    return actual;
   });
 
   return this;

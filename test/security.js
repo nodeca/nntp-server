@@ -37,7 +37,7 @@ describe('security', function () {
 
 
   afterEach(function () {
-    return client_plain.end('');
+    return client_plain.end();
   });
 
 
@@ -73,7 +73,7 @@ describe('security', function () {
 
 
   afterEach(function () {
-    return client_tls.end('');
+    return client_tls.end();
   });
 
 

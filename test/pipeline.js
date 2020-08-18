@@ -59,7 +59,7 @@ describe('pipeline', function () {
 
 
   afterEach(function () {
-    return client.end('');
+    return client.end();
   });
 
 
@@ -136,7 +136,7 @@ describe('pipeline', function () {
       .send('GROUP a\r\nGROUP b\r\nGROUP c')
       .expect(/^211 .*? a$/)
       .then(() => { assert.deepEqual(log, [ 'start a', 'stop a', 'start b' ]); })
-      .end('')
+      .end()
       .then(() => delay(10))
       .then(() => { close_fn(); })
       .then(() => delay(10))
@@ -168,7 +168,7 @@ describe('pipeline', function () {
   });
 
 
-  it.skip('should handle errors from streams', function () {
+  it('should handle errors from streams', function () {
     let error;
 
     nntp._onError = function (err) {
@@ -177,24 +177,11 @@ describe('pipeline', function () {
     };
 
     nntp._getGroups = async function () {
-      let count = 0;
-
       return new stream.Readable({
         read() {
-          count++;
-
-          if (count === 1) {
-            this.push({
-              name: 'test.groups.foo',
-              min_index: 1,
-              max_index: 2,
-              total: 2
-            });
-          } else {
-            let err = new Error('Test stream error');
-            err.code = 'ETEST';
-            this.emit('error', err);
-          }
+          let err = new Error('Test stream error');
+          err.code = 'ETEST';
+          this.emit('error', err);
         },
         objectMode: true
       });
@@ -208,6 +195,6 @@ describe('pipeline', function () {
       .send('LIST')
       .then(() => wait_for_close)
       .expect(/^215 /)
-      .end('test.groups.foo 2 1 n');
+      .end();
   });
 });

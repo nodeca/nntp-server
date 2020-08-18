@@ -35,7 +35,7 @@ describe('flatten-stream', function () {
   });
 
 
-  it.skip('should start reading from next stream when previous is finished', function () {
+  it('should start reading from next stream when previous is finished', function () {
     let stream = flatten();
 
     // stream that writes 'foo', 'bar' and never ends
@@ -57,11 +57,10 @@ describe('flatten-stream', function () {
       objectMode: true
     });
 
-    //from2.obj([ src1, 'str', src2 ])
     Readable.from([ src1, 'str', src2 ])
       .pipe(stream);
 
-    return asline(stream).end('foo\r\nbar');
+    return asline(stream).expect('foo').expect('bar').end();
   });
 
 

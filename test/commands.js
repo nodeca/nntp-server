@@ -37,7 +37,7 @@ describe('commands', function () {
 
 
   afterEach(function () {
-    return client.end('');
+    return client.end();
   });
 
 
@@ -150,7 +150,10 @@ describe('commands', function () {
         .send('GROUP test.groups.foo')
         .expect(/^211 /)
         .send('HEAD')
-        .expect('221 1 <4c51f95eda05@lists.example.org>');
+        .expect('221 1 <4c51f95eda05@lists.example.org>')
+        .expect(/^From: /)
+        .expect(/^Xref: /)
+        .expect('.');
     });
 
     it('HEAD should fail in empty group', function () {
@@ -176,7 +179,9 @@ describe('commands', function () {
     it('HEAD should retrieve an article header by id', function () {
       return client
         .send('HEAD <d417dea0c7a3@lists.example.org>')
-        .expect('221 0 <d417dea0c7a3@lists.example.org>');
+        .expect('221 0 <d417dea0c7a3@lists.example.org>')
+        .expect(/^From: /)
+        .expect('.');
     });
 
     it('HEAD should retrieve an article header by number', function () {
@@ -184,7 +189,9 @@ describe('commands', function () {
         .send('GROUP test.groups.foo')
         .expect(/^211/)
         .send('HEAD 2')
-        .expect('221 2 <d417dea0c7a3@lists.example.org>');
+        .expect('221 2 <d417dea0c7a3@lists.example.org>')
+        .expect(/^From: /)
+        .expect('.');
     });
 
     it('HEAD should fail if no article found by number', function () {
