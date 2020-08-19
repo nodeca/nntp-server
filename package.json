@@ -21,7 +21,6 @@
   "dependencies": {
     "debug": "^4.0.0",
     "denque": "^1.1.1",
-    "destroy": "^1.0.4",
     "serialize-error": "^7.0.1",
     "split2": "^3.0.0"
   },
