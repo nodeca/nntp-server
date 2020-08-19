@@ -4,7 +4,7 @@
 
 
 const assert   = require('assert');
-const pump     = require('pump');
+const pipeline = require('stream').pipeline;
 const split2   = require('split2');
 const util     = require('util');
 
@@ -18,7 +18,7 @@ function AsLine(stream, options = {}) {
   this._timeout   = options.timeout;
   this._linebreak = options.linebreak || '\r\n';
 
-  pump(stream, this._input);
+  pipeline(stream, this._input, () => {});
 }
 
 
@@ -129,6 +129,7 @@ AsLine.prototype.skip = function (lines = 1) {
 AsLine.prototype.end = function () {
   this._promise = this._promise.then(() => {
     this._input.end();
+    this._output.end();
   });
 
   return this;
