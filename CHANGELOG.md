@@ -1,3 +1,11 @@
+2.0.0 / 2020-10-05
+------------------
+
+- node.js v10+ required.
+- Switch to native stream methods.
+- Code cleanup.
+
+
 1.0.3 / 2018-09-11
 ------------------
 
