@@ -1,3 +1,11 @@
+3.0.0 / 2021-05-25
+------------------
+
+- node.js v14+ required.
+- deps bump.
+- remove lodash dependency.
+
+
 2.0.0 / 2020-10-05
 ------------------
 
