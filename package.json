@@ -15,8 +15,7 @@
   "scripts": {
     "lint": "eslint .",
     "test": "npm run lint && nyc mocha",
-    "coverage": "npm run test && nyc report --reporter html",
-    "report-coveralls": "nyc report --reporter=text-lcov | coveralls"
+    "covreport": "nyc report --reporter html && nyc report --reporter lcov"
   },
   "dependencies": {
     "debug": "^4.3.1",
@@ -25,7 +24,6 @@
     "split2": "^3.2.2"
   },
   "devDependencies": {
-    "coveralls": "^3.1.0",
     "eslint": "^7.27.0",
     "mocha": "^8.4.0",
     "nyc": "^15.1.0"
