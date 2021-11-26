@@ -128,8 +128,8 @@ describe('flatten-stream', function () {
       stream.on('end', function () {
         assert.strictEqual(buffer.length, 1);
         assert.strictEqual(buffer.toString(), '123\r\n');
-        assert(src2_ended, 'src2 ended');
-        assert(src3_ended, 'src3 ended');
+        assert.strictEqual(src2_ended, true, 'src2 ended');
+        assert.strictEqual(src3_ended, true, 'src3 ended');
         resolve();
       });
     });

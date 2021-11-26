@@ -103,9 +103,9 @@ AsLine.prototype.expect = function (stop, match) {
 
   this._promise = this._read(read_fn)._promise.then(actual => {
     if (typeof match === 'function') {
-      assert(match(actual), util.inspect(actual));
+      assert.strictEqual(match(actual), true, util.inspect(actual));
     } else if (typeof match.test === 'function') {
-      assert(match.test(actual), `${util.inspect(match)} ~ ${util.inspect(actual)}`);
+      assert.strictEqual(match.test(actual), true, `${util.inspect(match)} ~ ${util.inspect(actual)}`);
     } else {
       assert.strictEqual(actual, match);
     }
