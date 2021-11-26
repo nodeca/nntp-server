@@ -48,12 +48,12 @@ describe('wildmat', function () {
   });
 
   it('should generate correct regexps for wildcards', function () {
-    assert.equal(wildmat('*').source, '^(.+)$');
-    assert.equal(wildmat('?').source, '^(.)$');
-    assert.equal(wildmat('?*').source, '^(..*)$');
-    assert.equal(wildmat('**').source, '^(.+)$');
-    assert.equal(wildmat('????').source, '^(....)$');
-    assert.equal(wildmat('?*?*?').source, '^(..*..*.)$');
+    assert.strictEqual(wildmat('*').source, '^(.+)$');
+    assert.strictEqual(wildmat('?').source, '^(.)$');
+    assert.strictEqual(wildmat('?*').source, '^(..*)$');
+    assert.strictEqual(wildmat('**').source, '^(.+)$');
+    assert.strictEqual(wildmat('????').source, '^(....)$');
+    assert.strictEqual(wildmat('?*?*?').source, '^(..*..*.)$');
   });
 
   it('should throw on invalid wildmat', function () {

@@ -107,7 +107,7 @@ AsLine.prototype.expect = function (stop, match) {
     } else if (typeof match.test === 'function') {
       assert(match.test(actual), `${util.inspect(match)} ~ ${util.inspect(actual)}`);
     } else {
-      assert.equal(actual, match);
+      assert.strictEqual(actual, match);
     }
 
     return actual;

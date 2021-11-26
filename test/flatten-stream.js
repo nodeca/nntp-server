@@ -74,7 +74,7 @@ describe('flatten-stream', function () {
       objectMode: true
     });
 
-    assert.equal(stream.writable, true);
+    assert.strictEqual(stream.writable, true);
 
     // using nested array because from2([ null ]) will just close input stream
     Readable.from([ [ 'foo', null, 'bar', guard ] ])
@@ -84,8 +84,8 @@ describe('flatten-stream', function () {
 
     stream.on('data', d => buffer.push(d));
     stream.on('end', function () {
-      assert.equal(buffer.length, 1);
-      assert.equal(buffer.toString(), 'foo\r\n');
+      assert.strictEqual(buffer.length, 1);
+      assert.strictEqual(buffer.toString(), 'foo\r\n');
       next();
     });
   });
@@ -126,8 +126,8 @@ describe('flatten-stream', function () {
     return new Promise(resolve => {
       stream.on('data', d => buffer.push(d));
       stream.on('end', function () {
-        assert.equal(buffer.length, 1);
-        assert.equal(buffer.toString(), '123\r\n');
+        assert.strictEqual(buffer.length, 1);
+        assert.strictEqual(buffer.toString(), '123\r\n');
         assert(src2_ended, 'src2 ended');
         assert(src3_ended, 'src3 ended');
         resolve();

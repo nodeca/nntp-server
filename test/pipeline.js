@@ -99,7 +99,7 @@ describe('pipeline', function () {
       .expect(/^411 /)
       .expect(/^211 .*? c$/)
       .then(() => {
-        assert.deepEqual(log, [ 'start a', 'stop a', 'start b', 'stop b', 'start c', 'stop c' ]);
+        assert.deepStrictEqual(log, [ 'start a', 'stop a', 'start b', 'stop b', 'start c', 'stop c' ]);
       });
   });
 
@@ -135,12 +135,12 @@ describe('pipeline', function () {
     return client
       .send('GROUP a\r\nGROUP b\r\nGROUP c')
       .expect(/^211 .*? a$/)
-      .then(() => { assert.deepEqual(log, [ 'start a', 'stop a', 'start b' ]); })
+      .then(() => { assert.deepStrictEqual(log, [ 'start a', 'stop a', 'start b' ]); })
       .end()
       .then(() => delay(10))
       .then(() => { close_fn(); })
       .then(() => delay(10))
-      .then(() => { assert.deepEqual(log, [ 'start a', 'stop a', 'start b', 'stop b' ]); });
+      .then(() => { assert.deepStrictEqual(log, [ 'start a', 'stop a', 'start b', 'stop b' ]); });
   });
 
 
@@ -162,8 +162,8 @@ describe('pipeline', function () {
       .send('GROUP foobar')
       .expect(/^403 /)
       .then(() => {
-        assert.equal(error.code, 'ETEST');
-        assert.equal(error.nntp_command, 'GROUP foobar');
+        assert.strictEqual(error.code, 'ETEST');
+        assert.strictEqual(error.nntp_command, 'GROUP foobar');
       });
   });
 
