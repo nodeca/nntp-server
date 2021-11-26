@@ -18,14 +18,15 @@
     "covreport": "nyc report --reporter html && nyc report --reporter lcov"
   },
   "dependencies": {
-    "debug": "^4.3.1",
-    "denque": "^1.5.0",
+    "debug": "^4.3.2",
+    "denque": "^2.0.1",
     "serialize-error": "^8.1.0",
-    "split2": "^3.2.2"
+    "split2": "^4.1.0"
   },
   "devDependencies": {
-    "eslint": "^7.27.0",
-    "mocha": "^8.4.0",
+    "eslint": "^8.3.0",
+    "js-yaml": "^4.1.0",
+    "mocha": "^9.1.3",
     "nyc": "^15.1.0"
   }
 }

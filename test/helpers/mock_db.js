@@ -8,7 +8,7 @@ const { Readable } = require('stream');
 
 module.exports = function mock_db(nntp, fixture_path) {
 
-  let { groups, messages } = yaml.safeLoad(fs.readFileSync(fixture_path));
+  let { groups, messages } = yaml.load(fs.readFileSync(fixture_path));
 
   nntp._getGroups = function (session, ts, wildmat) {
     let result = groups
