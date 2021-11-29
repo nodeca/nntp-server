@@ -1,3 +1,11 @@
+3.1.0 / WIP
+------------------
+
+- Switch to ES6 classes.
+- Use strict methods in asserts.
+- Deps bump.
+
+
 3.0.0 / 2021-05-25
 ------------------
 
